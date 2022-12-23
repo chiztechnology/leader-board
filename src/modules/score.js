@@ -6,7 +6,7 @@ const loadScore = () => scores;
 
 const showScore = (score, DOMContainer) => {
   DOMContainer.innerHTML += `<div class='item'>
-  <h3>${score.name}: ${score.score}</h3>
+  <h4>${score.user}: ${score.score}</h4>
 </div>`;
 };
 

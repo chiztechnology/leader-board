@@ -1,7 +1,7 @@
 const baseUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/';
-const gameId = '';
+const gameId = 'tJAkpDn19v9jdXxYOHzZ';
 
-const sendData = (baseUrl, data) => {
+const createGame = (data) => {
   fetch(baseUrl, {
     method: 'POST',
     body: JSON.stringify(data),
@@ -14,21 +14,15 @@ const sendData = (baseUrl, data) => {
 };
 
 
-const getData = baseUrl => {
+const getData = async () => {
 
-  fetch(baseUrl + gameId + '/scores/', {
-    method: 'GET',
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  })
+  return await fetch(baseUrl + gameId + '/scores/')
     .then((response) => response.json())
-    .then((json) => console.log(json));
 };
 
-const postScore = (baseUrl, data) => {
+const postScore = async (data) => {
 
-  fetch(baseUrl + gameId + '/scores/', {
+  return await fetch(baseUrl + gameId + '/scores/', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
@@ -36,5 +30,8 @@ const postScore = (baseUrl, data) => {
     },
   })
     .then((response) => response.json())
-    .then((json) => console.log(json));
 };
+
+exports.getData = getData;
+exports.postScore = postScore;
+exports.createGame = createGame;

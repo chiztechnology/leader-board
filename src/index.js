@@ -1,32 +1,36 @@
 import './index.css';
-import { loadScore, addscore, showScore } from './modules/score.js';
+import { getData, postScore } from './modules/api-connect.js';
+import { showScore } from './modules/score.js';
 
 const DOMContainer = document.querySelector('.data-source');
 window.onload = () => {
   // Fetch scores
-  const scores = loadScore();
-  scores.forEach((score) => {
-    showScore(score, DOMContainer);
-  });
+  getData().then(response => {
+    response.result.length > 1 && response.result.forEach((score) => {
+      showScore(score, DOMContainer);
+    });
+  })
 };
 
 document.getElementById('refresh-btn').onclick = () => {
   // clear current items
   DOMContainer.innerHTML = '';
   // Fetch scores
-  const scores = loadScore();
-  scores.forEach((score) => {
-    showScore(score, DOMContainer);
-  });
+  getData().then(response => {
+    response.result.length > 1 && response.result.forEach((score) => {
+      showScore(score, DOMContainer);
+    });
+  })
 };
 
 document.getElementById('form').onsubmit = (e) => {
   e.preventDefault();
-  const scores = loadScore();
-  const id = scores.length > 0 ? scores[scores.length - 1].id + 1 : 1;
-  const name = document.getElementById('name').value;
+  const user = document.getElementById('name').value;
   const score = document.getElementById('score').value;
-  const obj = { id, name, score };
-  addscore(obj);
-  showScore(obj, DOMContainer);
+  const obj = { "user": user, "score": score };
+  postScore(obj).then((response) => {
+    showScore(obj, DOMContainer);
+    document.getElementById('name').value = '';
+    document.getElementById('score').value = '';
+  });
 };
