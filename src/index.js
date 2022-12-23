@@ -25,9 +25,9 @@ document.getElementById('refresh-btn').onclick = () => {
 
 document.getElementById('form').onsubmit = (e) => {
   e.preventDefault();
-  const name = document.getElementById('name').value;
+  const user = document.getElementById('name').value;
   const score = document.getElementById('score').value;
-  const obj = { user: name, score: score };
+  const obj = { user, score };
   postScore(obj).then(() => {
     showScore(obj, DOMContainer);
     document.getElementById('name').value = '';
