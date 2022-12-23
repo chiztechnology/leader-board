@@ -26,11 +26,7 @@ document.getElementById('form').onsubmit = (e) => {
   const id = scores.length > 0 ? scores[scores.length - 1].id + 1 : 1;
   const name = document.getElementById('name').value;
   const score = document.getElementById('score').value;
-  const obj = {
-    id: id,
-    name: name,
-    score: score
-  };
+  const obj = {id,name,score};
   addscore(obj);
   showScore(obj, DOMContainer);
 };
