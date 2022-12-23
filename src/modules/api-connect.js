@@ -12,9 +12,9 @@ const createGame = (data) => {
     .then((response) => response.json());
 };
 
-const getData = async () =>  fetch(`${baseUrl}${gameId}/scores/`).then((response) => response.json());
+const getData = async () => fetch(`${baseUrl}${gameId}/scores/`).then((response) => response.json());
 
-const postScore = async (data) =>  fetch(`${baseUrl}${gameId}/scores/`,
+const postScore = async (data) => fetch(`${baseUrl}${gameId}/scores/`,
   {
     method: 'POST',
     body: JSON.stringify(data),
