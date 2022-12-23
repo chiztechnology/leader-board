@@ -5,30 +5,30 @@ import { showScore } from './modules/score.js';
 const DOMContainer = document.querySelector('.data-source');
 window.onload = () => {
   // Fetch scores
-  getData().then(response => {
-    response.result.length > 1 && response.result.forEach((score) => {
+  getData().then((response) => {
+    response.result.forEach((score) => {
       showScore(score, DOMContainer);
     });
-  })
+  });
 };
 
 document.getElementById('refresh-btn').onclick = () => {
   // clear current items
   DOMContainer.innerHTML = '';
   // Fetch scores
-  getData().then(response => {
-    response.result.length > 1 && response.result.forEach((score) => {
+  getData().then((response) => {
+    response.result.forEach((score) => {
       showScore(score, DOMContainer);
     });
-  })
+  });
 };
 
 document.getElementById('form').onsubmit = (e) => {
   e.preventDefault();
-  const user = document.getElementById('name').value;
+  const name = document.getElementById('name').value;
   const score = document.getElementById('score').value;
-  const obj = { "user": user, "score": score };
-  postScore(obj).then((response) => {
+  const obj = { user: name, score: score };
+  postScore(obj).then(() => {
     showScore(obj, DOMContainer);
     document.getElementById('name').value = '';
     document.getElementById('score').value = '';
