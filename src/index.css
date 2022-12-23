@@ -149,6 +149,7 @@ footer p {
   display: flex;
   align-items: center;
   padding-left: 5px;
+  font-weight: 300;
 }
 
 .item:nth-child(even) {
