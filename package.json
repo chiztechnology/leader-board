@@ -21,6 +21,7 @@
   "homepage": "https://github.com/chiztechnology/leader-board#readme",
   "devDependencies": {
     "css-loader": "^6.7.2",
+    "eslint": "^8.30.0",
     "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.75.0",
